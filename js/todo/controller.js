@@ -6,9 +6,14 @@ let view = new View(model.tasks);
 
 view.elements.form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let newTask = model.addTask(view.elements.inputAdd.value);
-  view.renderTask(newTask);
-  view.clearInput();
+  if (view.elements.inputAdd.value === "") {
+    alert("Please, write the task");
+    return false;
+  } else {
+    let newTask = model.addTask(view.elements.inputAdd.value);
+    view.renderTask(newTask);
+    view.clearInput();
+  }
 });
 
 view.elements.list.addEventListener("click", (e) => {

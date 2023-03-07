@@ -1,11 +1,15 @@
 export default class Model {
   constructor() {
-    this.tasks = [];
+    this.tasks = this.loadFromLocalStorage();
     this.setId();
     this.loadFromLocalStorage();
   }
 
   addTask(taskText) {
+    if (taskText == "") {
+      return false;
+    }
+
     let task = {
       text: taskText,
       status: "active",
@@ -54,7 +58,9 @@ export default class Model {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
 
     if (tasks) {
-      this.tasks = tasks;
+      return tasks;
     }
+
+    return [];
   }
 }

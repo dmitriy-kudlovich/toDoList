@@ -44,4 +44,6 @@ export default class View {
       elem.setAttribute("id", taskObj[index].id);
     });
   }
+
+  renderModalWindow() {}
 }
